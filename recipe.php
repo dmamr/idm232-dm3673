@@ -3,10 +3,10 @@
         echo'You did something wrong.';
         die;
     }
-    $host = "10.248.95.141";
-    $user = "dm3673";
-    $pass = "QNULi44urv6RuF0B";
-    $dbnm = "dm3673_db";
+    $host = "localhost";
+    $user = "eyenahline";
+    $pass = "asdf1234";
+    $dbnm = "dariya";
     $connect = new mysqli($host, $user, $pass, $dbnm); 
     $stmt = $connect->prepare("SELECT * FROM recipes WHERE id=?");
     $stmt->bind_param("i", $_GET['id']);
@@ -29,15 +29,16 @@
 </head>
 <body>
 <div class="mainmainmain">
-    <div style="display: flex; justify-content: flex-start; align-items: center;">
+    <div class="recipesheader">
         <h1 class="title">RECIPE</h1>
-        <div class="spacer">
-        </div>
+        <div class="spacer"></div>
         <form action="recipes.php" method="get">
             <input class="search" type="text" name="query" placeholder="SEARCH"> 
         </form>
-        <a href="recipe.php"><img class="minibutton" src="pics/clear form.svg"></a>
-        <a href="index.php"><img class="minibutton" src="pics/filter.png"></a>
+        <div>
+            <a href="recipes.php"><img class="minibutton" src="pics/clear form.svg"></a>
+            <a href="index.php"><img class="minibutton" src="pics/filter.png"></a>
+        </div>
     </div>
     <hr class="h1hr">
     <div class="kachow">
@@ -60,7 +61,7 @@
             <div class="recipetitle"><?=$row['name'];?></div>
             <div class="subtitle"><?=$row['cooktime'];?></div>
             <div class="description"><?=$row['description'];?></div>
-            <a class="returnbutton" href="recipes.php">RETURN</a>
+            <a class="returnbutton desktop" href="recipes.php">RETURN</a>
         </div>
         <div class="rightthingy">
             <h3>list of ingredients</h3>
@@ -68,6 +69,7 @@
             <h3>steps</h3>
             <ol><?=$row['steps'];?></ol>
         </div>
+        <a class="returnbutton mobile" href="recipes.php">RETURN</a>
     </div>
 </div>
 <div id="menu" class="menu">

@@ -1,13 +1,17 @@
 const menu = document.getElementById('menu');
 const overlay = document.getElementById('overlay');
 let mustLeave = false;
-document.getElementById('menu').onmouseenter = () => {
+function showOverlay() {
+	overlay.classList.add('show');
+	overlay.classList.remove('hidden');
+}
+menu.onclick = showOverlay;
+menu.onmouseenter = () => {
 	if (!mustLeave) {
-		overlay.classList.add('show');
-		overlay.classList.remove('hidden');
+		showOverlay();
 	}
 };
-document.getElementById('menu').onmouseleave = () => {
+menu.onmouseleave = () => {
 	mustLeave = false;
 };
 document.getElementById('close').onclick = () => {

@@ -14,6 +14,7 @@
 	line-height: normal;
 	margin-left: 20px;
 	margin-top: 10px;
+	text-decoration: none;
 }
 .h1hr{
 	border: none;
@@ -38,6 +39,7 @@
 	padding: 15px;
 	margin: 7px;
 	cursor: pointer;
+	font-size: 20px;
 }
 .mainblock{
 	display: flex;
@@ -56,13 +58,13 @@ body{
 	height: 100vh;
 	width: 100vw;
 	display: flex;
-	overflow: hidden;
+	overflow: clip;
 }
 .mainmainmain{
 	display: flex;
 	flex-direction: column;
 	flex: 1;
-
+	overflow: hidden;
 }
 .burgertext{
 	color: #1E1E1E;
@@ -104,9 +106,9 @@ body{
 	top: 0;
 	border-left: 2px solid #1E1E1E;
 	background: #F1EF5E;
-	display: flex;
-	translate: 100% 0;
 	animation-duration: 0.5s;
+	display: flex;
+  translate: 100% 0;
 }
 .overlay.hidden {
 	animation-name: slide-out;
@@ -119,7 +121,6 @@ body{
   from {
     translate: 100% 0;
   }
-
   to {
     translate: 0 0;
   }
@@ -128,7 +129,6 @@ body{
   from {
     translate: 0 0;
   }
-
   to {
     translate: 100% 0;
   }
@@ -140,11 +140,15 @@ body{
 	align-items: start;
 }
 .overlaymenu {
-	background: #F1EF5E;
+	position: absolute;
+	left: 0;
+	top: 0;
+	right: 0;
+	bottom: 0;
 	display: flex;
-	flex-direction: column;
 	justify-content: flex-end;
-	align-items: center;
+	align-items: end;
+	pointer-events: none;
 }
 .overlaymenu>button {
 	all: unset;
@@ -152,6 +156,7 @@ body{
 	flex-direction: column;
 	align-items: center;
 	cursor: pointer;
+	pointer-events: auto;
 }
 .spacer{
 	flex: 1;
@@ -159,6 +164,11 @@ body{
 .shorten{
 	width: 50%;
 	margin-left:30px;
+}
+.recipesheader {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
 }
 .recipetitle{
 	color: #1E1E1E;
@@ -191,6 +201,7 @@ body{
 	overflow-y: auto;
 	grid-template-columns: repeat(auto-fill, 300px);
 	row-gap: 15px;
+	flex: 1;
 }
 .subtitle{
 	color: #1E1E1E; 
@@ -199,8 +210,8 @@ body{
 	font-family: 'Maven Pro'; 
 	font-size: 16px; 
 	font-style: normal;
-	 font-weight: 500; 
-	 line-height: normal;
+	font-weight: 500; 
+	line-height: normal;
 }
 .recipeimage{
 	height: 273px;
@@ -295,6 +306,7 @@ body{
 	flex-direction: column;
 	width: 243px;
 	cursor: pointer;
+	font-size: 20px;
 }
 .rightthingy{
 	flex: 1;
@@ -329,14 +341,184 @@ body{
 	align-items: center;
 	width: 90%;
 	margin-bottom: 20px;
-
 }
 .help{
 	padding: 0;
 	margin: 0;
 }
-
 .helpnumber{
 	padding: 0;
 	margin: 0;
+}
+.mobile {
+	display: none;
+}
+@media screen and (max-device-width: 600px) {
+	.desktop {
+		display: none;
+	}
+	.mobile {
+		display: flex;
+	}
+	body{
+		flex-direction: column-reverse;
+	}
+	.title {
+		font-size: 160px;
+	}
+	.mainblock {
+		flex-direction: column-reverse;
+		overflow-y: auto;
+	}
+	.buttons {
+		width: 500px;
+	}
+	.buttons > a {
+		font-size: 40px;
+		padding: 30px;
+		margin: 14px;
+	}
+	.overlay{
+		translate: 0 -100%;
+	}
+	@keyframes slide-in{
+		from {
+			translate: 0 -100%;
+		}
+		to{
+			translate: 0 0;
+		}
+	}
+	@keyframes slide-out{
+		from{
+			translate: 0 0;
+		}
+		to {
+			translate: 0 -100%;
+		}
+	}
+	.burgertext{
+		transform: none;
+		margin-top: 30px;
+		font-size: 48px;
+		width: auto;
+		height: auto;
+		margin-right: 25px;
+	}
+	.menu{
+		border-left: none;
+	  border-bottom: 2px solid #1E1E1E;
+		flex-direction: row-reverse;
+		justify-content: flex-start;
+	}
+	.burger{
+		margin-bottom: 0;
+		width: 32px;
+		height: 32px;
+		transform: rotate(-90deg);
+		margin-right: 10px;
+	}
+	.shorten {
+		width: 100%;
+		margin-left: 0;
+	}
+	.overlaymenu > button {
+		flex-direction: row-reverse;
+	}
+	.recipesheader {
+		flex-direction: column;
+		align-items: start;
+	}
+	.search {
+		margin-left: 20px;
+		font-size: 48px;
+		height: 100px;
+		padding-left: 20px;
+		align-self: stretch;
+	}
+	.search::placeholder {
+		font-size: 48px;
+	}
+	.minibutton {
+		width: 56px;
+		height: 56px;
+		margin: 20px;
+	}
+	.recipes{
+		padding-top: 30px ;
+		padding-bottom: 30px;
+		grid-template-columns: repeat(auto-fill, 450px);
+		row-gap: 22.5px;
+	}
+	.subtitle{
+		font-size: 24px;
+	}
+	.recipeimage{
+		height: 409.5px;
+		width: 409.5px;
+	}
+	.recipeatt{
+		width: 75px;
+		height: 75px;
+	}
+	.att{
+		margin-top: 22.5px;
+	}
+	.recipetitle{
+		font-size: 36px;
+		padding: 10.5px;
+	}
+	.recipe{
+		width: 450px;
+	}
+	.kachow {
+		align-items: center;
+		flex-direction: column;
+	}
+	.leftthingy {
+		width: auto;
+		align-self: stretch;
+		margin: 70px;
+	}
+	.leftthingy > .recipeimage {
+		width: auto;
+		height: auto;
+		align-self: stretch;
+	}
+	.leftthingy > .att {
+		margin-top: 30px;
+	}
+	.leftthingy > .recipeatt {
+		width: 150px;
+		height: 150px;
+	}
+	.leftthingy > .recipetitle {
+		font-size: 56px;
+		padding: 14px;
+	}
+	.leftthingy > .subtitle {
+		font-size: 48px;
+	}
+	.description {
+		width: auto;
+		font-size: 48px;
+		margin-top: 20px;
+		margin-bottom: 40px;
+	}
+	.rightthingy {
+		font-size: 48px;
+		padding: 50px;
+	}
+	.rightthingy h3 {
+		margin-top: 20px;
+		margin-bottom: 20px;
+	}
+	.returnbutton {
+		padding: 30px;
+		width: 486px;
+		font-size: 40px;
+	}
+	.helptext {
+		font-size: 48px;
+	}
 }
